@@ -1,11 +1,14 @@
 package com.boot.app.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity(name = "speakers")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Speaker {
 
     @Id
@@ -31,6 +34,7 @@ public class Speaker {
     }
 
     @ManyToMany(mappedBy = "speakers")
+
     private List<Session> sessions;
 
     public Long getSpeaker_id() {

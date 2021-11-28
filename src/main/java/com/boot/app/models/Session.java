@@ -1,9 +1,13 @@
 package com.boot.app.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity(name = "sessions")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Session {
 
     @Id
@@ -20,6 +24,7 @@ public class Session {
             joinColumns = @JoinColumn(name = "session_id"),
             inverseJoinColumns = @JoinColumn(name = "speaker_id")
     )
+    @JsonIgnore
     private List<Speaker> speakers ;
 
     public Session(){

@@ -24,6 +24,7 @@ public class SessionsController {
     @GetMapping
     @RequestMapping("{id}")
     public Session get(@PathVariable Long id){
+        System.out.println(sessionRepository.getOne(id));
         return sessionRepository.getOne(id);
     }
 
